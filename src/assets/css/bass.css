@@ -46,16 +46,6 @@
   border-radius: 5px;
 }
 
-/* .content-container ul li:hover {
-  background-color: var(--color-secondary);
-  cursor: pointer;
-} */
-/* .content-container ul li a {
-  text-decoration: none;
-  color: var(--color-text-secondary);
-  font-weight: bold;
-} */
-
 
 @media (max-width: 768px) {
   .content-container {
