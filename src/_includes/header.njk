@@ -1,0 +1,23 @@
+<header>
+  <nav>
+    <a href="{{ '/' ~ teamPageURL | default('') }}" class="pfp">
+      <img src={{ logo_location | default("../../assets/files/logos/default.png")}} alt="Team Logo">
+    </a>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links">
+      <a href="/leaderboard/">Leaderboard</a>
+      <a href="/rules/">Rules</a>
+      <a href="/help/">Help</a>
+      <a href="/meet-the-teams/">Meet the Teams</a>
+      <a href="/admin/">Admin 🔐</a>
+      <a href="/game-master/">Game Master 🔐</a>
+      <a href="/registration/?token=X9T7P2LJQM">Registration 🔐</a>
+    </div>
+  </nav>
+</header>
+
+<script src="/assets/js/header.js"></script>
