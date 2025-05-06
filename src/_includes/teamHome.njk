@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="../../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../../assets/css/index.css">
+  <link rel="stylesheet" href="../../../assets/css/header.css">
+  <link rel="stylesheet" href="../../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../../assets/css/teamHome.css">
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+</head>
+<body>
+
+    {% include "header.njk" %}
+
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="content-container">
+      
+      <div class="team-lore">
+        
+        <p>Welcome Team {{team}} Members! Make sure to take photos for the yearbook! Please put all photos from the weekend in this <a href="https://photos.app.goo.gl/demcWKQ1PQKzhgm46" target="_blank">google photos album</a> Happy Hunting!</p>
+        <p>- Yearbook Committee</p>
+        {{ content | safe }}
+      </div>
+
+      <div class="team-container">
+      <div class="team-container-captain"></div>
+        <div class="team-container-members"></div>
+      </div>
+
+      <div class="clue-container"></div>
+<!--       
+      {% for clue in clues %}
+        <li class="clues">
+          <a href="/clues/{{clue[0]}}?clueID={{clue[1]}}" class="clue-link">{{clue[0]}}</a>
+        </li>
+      {% endfor %} -->
+
+      <div class="qr-code">
+        <img src="../../../assets/files/qr-codes/{{team}}.png" alt="QR Code" class="qr-code-image">
+      </div>
+
+    </div>
+
+    {% include "footer.njk" %}
+  
+  <script src="/assets/js/team.js"></script>
+
+</body>
+</html>
