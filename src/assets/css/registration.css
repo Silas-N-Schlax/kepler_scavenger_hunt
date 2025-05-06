@@ -1,0 +1,73 @@
+#upload-form {
+  display: flex;
+  position: relative; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999; 
+  color: black
+}
+
+input[type="file"] {
+  margin: 10px 0;
+}
+input[type="file"]::-webkit-file-upload-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+input[type="text"], input[type="password"] {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+select {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+form button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  #upload-form {
+    width: 90%;
+  }
+  input[type="text"],
+  select {
+    width: 100%;
+  }
+}

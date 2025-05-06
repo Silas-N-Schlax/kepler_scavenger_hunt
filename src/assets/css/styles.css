@@ -1,0 +1,27 @@
+:root {
+  --color-primary: #1B263B;
+  --color-primary-dropdown: #2c3e61;
+  --color-primary-textbox: #6d7b88;
+  --color-secondary: #18479e;
+  --color-accent: #abb3c4;
+  --color-success: #90BE6D;
+  --color-error: #E76F51;
+  --color-text-primary: #54545e;
+  --color-text-secondary: #ccd5da;
+  --color-button-primary: #501bba;
+  --color-bg: #cddbee;
+  --color-panel: #243447;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+
+}
