@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/bass.css">
+  <link rel="stylesheet" href="../assets/css/header.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  {% for styles in styles %}
+    <link rel="stylesheet" href="../assets/css/{{styles}}.css">
+  {% endfor %}
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+</head>
+<body>
+
+    {% include "header.njk" %}
+
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="content-container">
+      {{ content | safe }}
+    </div>
+
+
+
+    {% include "footer.njk" %}
+
+{% for scripts in scripts%}
+  <script src="/assets/js/{{scripts}}.js"></script>
+{% endfor %}
+  
+</body>
+</html>
