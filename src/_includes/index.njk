@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+</head>
+<body>
+
+    {% include "header.njk" %}
+
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="message-container">
+      {{ content | safe }}
+    </div>
+
+    <div class="content-container">
+  
+      {% for team in team %}
+        <li class="team">
+          <a href="/content/{{team}}/home" class="team-link">{{team}}</a>
+        </li>
+      {% endfor %}
+    </div>
+
+
+
+    {% include "footer.njk" %}
+
+  
+</body>
+</html>
