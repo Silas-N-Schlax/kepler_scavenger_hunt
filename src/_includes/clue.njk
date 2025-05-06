@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="../../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../../assets/css/index.css">
+  <link rel="stylesheet" href="../../../assets/css/header.css">
+  <link rel="stylesheet" href="../../../assets/css/footer.css">
+  <link rel="stylesheet" href="../../../assets/css/clue.css">
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+</head>
+<body>
+
+    {% include "header.njk" %}
+
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+
+    <div class="content-container">
+      
+      <div class="riddle-container">
+        <div class="location-riddle"></div>
+        <div class="riddle"></div>
+        <div class="answer"></div>
+      </div>
+
+      <div class="clue-riddle">
+        <div class="answer-field">
+          <h2>Answer:</h2>
+          <input type="text" id="answer" name="answer" placeholder="Enter your answer here">
+        </div>
+        <div class="submit-button">
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="qr-code">
+      <img src="../../assets/files/qr-codes/{{clueID}}.png" alt="QR Code" class="qr-code-image">
+    </div>
+
+    {% include "footer.njk" %}
+  
+<script src="/assets/js/clue.js"></script>
+
+
+
+</body>
+</html>
