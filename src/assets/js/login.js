@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   const form = document.createElement("form");
   form.id = "login-form";
   form.innerHTML = `
-    <label for="username">Username:</label>
+    <p id="login">Username:</p>
     <input type="text" id="username" name="username" required>
-    <label for="password">Password:</label>
+    <p id="login">Password:</p>
     <input type="password" id="password" name="password" required>
     <button id="login-button" type="submit">Login</button>
   `;
