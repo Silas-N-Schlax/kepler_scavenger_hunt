@@ -76,11 +76,11 @@ exports.handler = async function(event, context) {
 
 async function notifyAdmin(embedData) {
   const discordNotification = require("./utils/discordNotifications.js");
-  const discord = new discordNotification();
+  const discord = new discordNotification('1369299576430923867');
   console.log("Sending failed login attempt to Discord channel...");
   
   while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait 100ms before checking again
+    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
   }
   await discord.ping();
   await discord.sendEmbedToChannel(embedData);
