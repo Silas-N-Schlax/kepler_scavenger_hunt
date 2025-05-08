@@ -3,7 +3,6 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  // firstName, lastName, notes, team, role, imageUrl
   if (!body.firstName || !body.lastName || !body.notes || !body.team || !body.role || !body.imageUrl) {
     return {
       statusCode: 400,
@@ -56,7 +55,7 @@ exports.handler = async function(event, context) {
     color: '#FFFF00',
     fields: [
       { name: 'Player:', value: `${player.firstName} ${player.lastName}`, inline: false },
-      { name: 'Player ID:', value: `${player.playerID}`, inline: false },
+      { name: 'Player ID:', value: `${player.playerId}`, inline: false },
       { name: 'Team:', value: `${player.team}`, inline: false },
       { name: 'Role:', value: `${player.role}`, inline: false },
       { name: 'ImageURL:', value: `${player.imageUrl}`, inline: false },
@@ -84,11 +83,11 @@ function generatePlayerID(firstName, lastName) {
 
 async function notifyAdmin(embedData) {
   const discordNotification = require("./utils/discordNotifications.js");
-  const discord = new discordNotification();
+  const discord = new discordNotification('1367197526079312014');
   console.log("Sending failed login attempt to Discord channel...");
   
   while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait 100ms before checking again
+    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
   }
   await discord.sendEmbedToChannel(embedData);
   await discord.killClient();
