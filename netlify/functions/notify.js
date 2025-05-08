@@ -22,7 +22,7 @@ exports.handler = async function (event, context) {
 
   // Wait until the client is ready
   while (!discordNotification.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait 100ms before checking again
+    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
   }
 
   // Send the message

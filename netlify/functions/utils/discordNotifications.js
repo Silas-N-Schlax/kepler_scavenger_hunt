@@ -2,7 +2,8 @@ const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js'); // Ad
 require('dotenv').config();
 
 class DiscordNotification {
-  constructor() {
+  constructor(channel) {
+    this.channelId = channel || '1367197526079312014';
     this.client = new Client({
       intents: [
         GatewayIntentBits.Guilds,
@@ -29,8 +30,7 @@ class DiscordNotification {
 
   async ping() {
     try {
-      const channelId = '1367197526079312014'; 
-      const channel = await this.client.channels.fetch(channelId);
+      const channel = await this.client.channels.fetch(this.channelId);
 
       if (!channel || channel.type !== 0) { 
         console.error('Invalid channel ID or channel is not a text channel.');
@@ -45,8 +45,7 @@ class DiscordNotification {
 
   async sendToChannel(messageContent) {
     try {
-      const channelId = '1367197526079312014';
-      const channel = await this.client.channels.fetch(channelId);
+      const channel = await this.client.channels.fetch(this.channelId);
 
       if (!channel || channel.type !== 0) { 
         console.error('Invalid channel ID or channel is not a text channel.');
@@ -54,7 +53,6 @@ class DiscordNotification {
       }
 
       await channel.send(messageContent);
-      console.log(`Message sent to channel ${channelId}`);
     } catch (error) {
       console.error('Error sending message to channel:', error);
     }
@@ -76,8 +74,7 @@ class DiscordNotification {
       }
     }
     try {
-      const channelId = '1367197526079312014'; // Channel ID from .env
-      const channel = await this.client.channels.fetch(channelId);
+      const channel = await this.client.channels.fetch(this.channelId);
 
       if (!channel || channel.type !== 0) { // Ensure it's a text channel
         console.error('Invalid channel ID or channel is not a text channel.');
@@ -102,7 +99,7 @@ class DiscordNotification {
         .setTimestamp();
 
       await channel.send({ embeds: [embed] });
-      console.log(`Embed sent to channel ${channelId}`);
+      console.log(`Embed sent to channel ${this.channelId}`);
     } catch (error) {
       console.error('Error sending embed to channel:', error);
     }
