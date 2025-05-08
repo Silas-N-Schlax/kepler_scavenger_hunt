@@ -111,7 +111,7 @@ async function loadContent(teamId, teamName) {
 //~ Load user Profiles
 
 async function loadUserProfiles() {
-  const response = await fetch("/.netlify/functions/getUserProfiles", {
+  const response = await fetch("/.netlify/functions/getUserProfile", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
