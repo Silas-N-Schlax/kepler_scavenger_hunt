@@ -26,6 +26,18 @@ exports.handler = async function(event, context) {
       let teamClues = team.cluesFound;
       teamClues[parseInt(clueId) - 1] = true;
       await db.collection("teams").updateOne({ teamId: teamId }, { $set: { cluesFound: teamClues } });
+      const teamData = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName})
+      notify({
+        title: `Clue Found!`,
+        description: `A team has found ${clue.clueId}!!!`,
+        color: '#00FFFF',
+        fields: [
+          { name: 'Team:', value: `${teamName}`, inline: false },
+          { name: 'Score:', value: `${teamData.score}`, inline: false },
+          { name: 'Time:', value: `${new Date()}`, inline: false },
+        ],
+        footer: `${teamName} has unlocked clue ${clueId} 🔓`,
+      })
       return {
         statusCode: 200,
         body: JSON.stringify({ status: "success", message: "Authorized" }),
@@ -43,6 +55,19 @@ exports.handler = async function(event, context) {
     }
   }
 };
+
+async function notify(embedData) {
+  const discordNotification = require("./utils/discordNotifications.js");
+  const discord = new discordNotification('1367197526079312014');
+  console.log("Sending failed login attempt to Discord channel...");
+  
+  while (!discord.client.readyAt) {
+    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
+  }
+  await discord.ping();
+  await discord.sendEmbedToChannel(embedData);
+  await discord.killClient();
+}
 
 
 //http://localhost:8888/clues/Clue%201?clueID=1&clueAuth=abc
