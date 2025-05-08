@@ -20,14 +20,14 @@
       <h1>{{title}}</h1>
     </div>
 
-    <div class="content-container">
-      
       <div class="team-lore">
         
         <p>Welcome Team {{team}} Members! Make sure to take photos for the yearbook! Please put all photos from the weekend in this <a href="https://photos.app.goo.gl/demcWKQ1PQKzhgm46" target="_blank">google photos album</a> Happy Hunting!</p>
         <p>- Yearbook Committee</p>
         {{ content | safe }}
       </div>
+    <div class="content-container">
+      
 
       <div class="team-container">
       <div class="team-container-captain"></div>
@@ -43,7 +43,7 @@
       {% endfor %} -->
 
       <div class="qr-code">
-        <img src="../../../assets/files/qr-codes/{{team}}.png" alt="QR Code" class="qr-code-image">
+        <img src="../../../assets/files/qr-codes/teams/{{team}}.png" alt="QR Code" class="qr-code-image">
       </div>
 
     </div>
