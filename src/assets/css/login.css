@@ -1,6 +1,6 @@
-body {
+/* body {
   visibility: hidden;
-}
+} */
 
 #login-form {
   visibility: visible;
@@ -21,6 +21,12 @@ body {
   color: black
 }
 
+#login {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+}
+
 form button {
   margin-top: 10px;
   padding: 10px 20px;
@@ -29,4 +35,30 @@ form button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
+}
+form button:hover {
+  background-color: #0056b3;
+}
+
+input[type="file"] {
+  margin: 10px 0;
+}
+input[type="file"]::-webkit-file-upload-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+input[type="text"], input[type="password"] {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
 }
