@@ -2,16 +2,25 @@ body {
   visibility: hidden;
 }
 
+
 .team-lore {
   background-color: var(--color-primary-textbox);
   color: var(--color-text-secondary);
   padding: 20px;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   border-radius: 10px;
   margin-bottom: 30px;
   text-indent: 1.5em;
   line-height: 1.5em;
+}
+.team-lore a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: bold;
+}
+.team-lore a:hover {
+  text-decoration: underline;
 }
 
 .qr-code {
@@ -42,6 +51,7 @@ body {
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .team-member {
