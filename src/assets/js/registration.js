@@ -6,13 +6,17 @@ document.getElementById('upload-form').addEventListener('submit', async function
   const fileInput = document.getElementById('profile-pic');
   const firstName = document.getElementById('name-first').value.trim();
   const lastName = document.getElementById('name-last').value.trim();
-  const notes = document.getElementById('notes').value.trim() || "";
+  const notes = document.getElementById('notes').value.trim() || "No Notes";
   const team = document.getElementById('team').value.split(" ")[1].trim(); // Get the first part of the team name
   const role = document.getElementById('role').value;
   const file = fileInput.files[0];
   const userToRegister = localStorage.getItem('accountName') || ""; // Get the user to register
 
-
+  if (!firstName || !lastName || !notes || !team || !role || !file || !userToRegister) {
+    alert("Please fill in all fields and select a profile picture.");
+    button.style.visibility = "visible";
+    return;
+  }
 
   const reader = new FileReader();
 
