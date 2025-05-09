@@ -4,13 +4,26 @@
   --color-primary-textbox: #6d7b88;
   --color-secondary: #18479e;
   --color-accent: #abb3c4;
-  --color-success: #90BE6D;
+  --color-success: #4b9b0f;
   --color-error: #E76F51;
   --color-text-primary: #54545e;
   --color-text-secondary: #ccd5da;
   --color-button-primary: #501bba;
   --color-bg: #cddbee;
   --color-panel: #243447;
+  --color-forms: #f0f0f0;
+  --color-button: #007bff;
+  --color-button-hover: #0056b3;
+  --color-border: #ccc;
+  --color-header-link: #fff;
+  --color-header-link-hover: #F5E8D4;
+
+  --color-chat-default: #cabbbb;
+  --color-chat-default-text: #000000;
+  --color-chat-bg: #7da2db;
+  --color-chat-border-right: #1754af;
+  --color-chat-border-left: #ffffff;
+  --color-chat-bg-message-content: #f8f9fa;
 }
 
 body {

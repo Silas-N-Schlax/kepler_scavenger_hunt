@@ -3,6 +3,7 @@ label {
   width: 1px;
   white-space: nowrap;
 }
+
 span {
   display: table-cell;
   padding: 0 0 0 6px;

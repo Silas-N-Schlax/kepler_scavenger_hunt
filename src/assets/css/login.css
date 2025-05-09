@@ -1,6 +1,8 @@
-/* body {
+body {
   visibility: hidden;
-} */
+}
+
+
 
 #login-form {
   visibility: visible;
@@ -15,11 +17,19 @@
   justify-content: center;
   padding: 20px;
   border-radius: 10px;
-  background-color: #f0f0f0;
+  background-color: var(--color-forms);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   z-index: 9999; 
   color: black
 }
+
+#delete {
+  background-color: var(--color-error);
+}
+#add {
+  background-color: var(--color-success);
+}
+
 
 #login {
   margin: 0;
@@ -32,12 +42,12 @@ form button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--color-button);
+  color: var(--color-header-link);
   cursor: pointer;
 }
 form button:hover {
-  background-color: #0056b3;
+  background-color: var(--color-button-hover);
 }
 
 input[type="file"] {
@@ -47,9 +57,12 @@ input[type="file"]::-webkit-file-upload-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: var(--color-button);
   color: white;
   cursor: pointer;
+}
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: var(--color-button-hover);
 }
 input[type="text"], input[type="password"] {
   margin: 10px 0;
@@ -58,7 +71,4 @@ input[type="text"], input[type="password"] {
   border-radius: 5px;
   width: 100%;
 }
-input[type="text"]:focus, input[type="password"]:focus {
-  border-color: #007bff;
-  outline: none;
-}
+
