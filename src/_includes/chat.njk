@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/bass.css">
+  <link rel="stylesheet" href="../assets/css/header.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="../assets/css/chat.css">
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{page_title}}</title>
+</head>
+<body>
+
+    {% include "header.njk" %}
+
+    <div class="title">
+      <h1>{{title}}</h1>
+    </div>
+      
+
+    <div class="content-container">
+      
+      <div class="message-container"></div>
+
+      <div class="chat-footer">
+        <div class="timer"></div>
+        <form class="message-form">
+          <input type="text" class="message-input" placeholder="Type your message here..." required>
+          <button type="submit" class="send-button">Send</button>
+        </form>
+      </div>
+      
+      
+      
+      {{ content | safe }}
+    </div>
+
+
+
+    {% include "footer.njk" %}
+
+
+<script src="/assets/js/chat.js"></script>
+
+  
+</body>
+</html>
