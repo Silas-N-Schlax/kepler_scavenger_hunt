@@ -8,9 +8,11 @@ exports.handler = async function(event, context) {
   const winners = await getWinners(db);
   const accounts = await getAccounts(db);
   const teamNames = await getTeamNames(db);
+  const colors = await getColorSchemes(db);
+  const chatData = await getChatData(db);
+  console.log(chatData)
 
-
-  if (!teams || !players || !winners || !accounts || !teamNames) {
+  if (!teams || !players || !winners || !accounts || !teamNames || !colors || !chatData) {
     return {
       statusCode: 500,
       body: JSON.stringify({
@@ -27,7 +29,9 @@ exports.handler = async function(event, context) {
       players: players,
       winners: winners,
       accounts: accounts,
-      teamNames: teamNames
+      teamNames: teamNames,
+      colors: colors,
+      chatData: chatData
     })
   }
 }
@@ -51,4 +55,13 @@ async function getAccounts(db) {
 async function getTeamNames(db) {
   const teams = await db.collection("teams").find({}).toArray();
   return teams.map(team => team.teamName);
+}
+
+async function getColorSchemes(db) {
+  const colorSchemes = await db.collection("colorSchemes").find({}).toArray();
+  return colorSchemes.map(scheme => ({ key: scheme.key, color: scheme.color }));
+}
+
+async function getChatData(db) {
+  return await db.collection("chatData").findOne({ id: "messages" });
 }

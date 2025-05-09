@@ -3,12 +3,20 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  if (!body || !body.oldPlayerId) {
+  if (!body || !body.oldPlayerId || !body.userToUpdate) {
     return {
       statusCode: 400,
       body: JSON.stringify({ status: "error", message: "Invalid request data."})
     };
   } else {
+    const checkEditPerms = require("./utils/checkEditPerms.js");
+    const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
+    if (checkPerms.status === "error" || checkPerms.status === "denied") {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ status: "error", message: "User does not have edit permissions."})
+      }
+    }
     const updates = await updateDatabase(db, body);
     console.log(updates);
     if (updates === "error" || !updates) {
@@ -17,15 +25,16 @@ exports.handler = async function(event, context) {
         body: JSON.stringify({ status: "error", message: "Failed to update clue."})
       };
     } else {
-      notify({
+      const discordNotification = require("./utils/discordNotifications.js");
+      const discord = new discordNotification('1369299576430923867');
+      discord.handleEmbeds({
         title: 'Player Updated!',
         description: 'Someone has updated a player!',
-        color: "#00FF00", 
+        color: "#FFA500", 
         fields: [
           { name: 'User:', value: `${body.userToUpdate}`, inline: false },
           { name: 'Player Updated:', value: `${updates.firstName} ${updates.lastName}`, inline: false },
-          { name: 'Clue Auth:', value: `${updates.clueAuth}`, inline: false },
-          { name: 'Updated Clue:', value: `- Player ID: ${updates.playerId}\n- Name: ${updates.firstName} ${updates.lastName}\n- Team: ${updates.teamName}\n- Role: ${updates.role}\n- Image: ${updates.imageUrl}\n- Notes: ${updates.notes}`, inline: false },
+          { name: 'Updated Player Data:', value: `- Player ID: ${updates.playerId}\n- Name: ${updates.firstName} ${updates.lastName}\n- Team: ${updates.teamName}\n- Role: ${updates.role}\n- Image: ${updates.imageUrl}\n- Notes: ${updates.notes}`, inline: false },
           { name: 'Time', value: `${new Date()}`, inline: false },
         ],
         footer: 'Player updated 🧐',
@@ -56,18 +65,4 @@ async function updateDatabase(db, data) {
     await db.collection("players").updateOne({ playerId: data.oldPlayerId }, { $set: updatedData });
     return updatedData;
   }
-}
-
-
-async function notify(embedData) {
-  const discordNotification = require("./utils/discordNotifications.js");
-  const discord = new discordNotification('1369299576430923867');
-  console.log("Sending failed login attempt to Discord channel...");
-  
-  while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 10)); 
-  }
-  await discord.ping();
-  await discord.sendEmbedToChannel(embedData);
-  await discord.killClient();
 }

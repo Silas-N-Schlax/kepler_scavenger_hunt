@@ -103,6 +103,35 @@ class DiscordNotification {
     } catch (error) {
       console.error('Error sending embed to channel:', error);
     }
+
+  }
+  async handleEmbeds(embedData) {
+    try {
+      console.log("Sending failed login attempt to Discord channel...");
+      
+      while (!this.client.readyAt) {
+        await new Promise((resolve) => setTimeout(resolve, 10)); 
+      }
+      await this.sendEmbedToChannel(embedData);
+      await this.killClient();
+    } catch (error) {
+      console.error('Error handling embeds:', error);
+    }
+  }
+
+  async handleEmbedsWithPing(embedData) {
+    try {
+      console.log("Sending failed login attempt to Discord channel...");
+      
+      while (!this.client.readyAt) {
+        await new Promise((resolve) => setTimeout(resolve, 10)); 
+      }
+      await this.ping();
+      await this.sendEmbedToChannel(embedData);
+      await this.killClient();
+    } catch (error) {
+      console.error('Error handling embeds:', error);
+    }
   }
 }
 

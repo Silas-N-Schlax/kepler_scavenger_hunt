@@ -30,7 +30,9 @@ exports.handler = async function(event, context) {
     await db.collection("teams").updateOne({ teamId: teamId }, { $inc: { score: 1}} );
     await checkIfWon(teamId, teamName, db, await db.collection("teams").findOne({ teamId: teamId, teamName: teamName }));
     const teamData = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName})
-    notify({
+    const discordNotification = require("./utils/discordNotifications.js");
+    const discord = new discordNotification('1367197526079312014');
+    discord.handleEmbeds({
       title: `Clue Completed!`,
       description: `A team has completed ${clueId}!!!`,
       color: '#DDA0DD',
@@ -96,7 +98,7 @@ async function notify(embedData) {
   console.log("Sending failed login attempt to Discord channel...");
   
   while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
+    await new Promise((resolve) => setTimeout(resolve, 10));
   }
   await discord.ping();
   await discord.sendEmbedToChannel(embedData);

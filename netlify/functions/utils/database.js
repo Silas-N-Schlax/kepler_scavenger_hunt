@@ -8,7 +8,6 @@ class Database {
 
   async connectToDatabase() {
     if (this.db) {
-      // Return the existing connection if already established
       return this.db;
     }
 

@@ -14,6 +14,15 @@ exports.handler = async (event) => {
   const body = JSON.parse(event.body);
   const { fileBase64 } = body;
 
+  const checkEditPerms = require("./utils/checkEditPerms.js");
+    const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
+    if (checkPerms.status === "error" || checkPerms.status === "denied") {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ status: "error", message: "User does not have edit permissions."})
+      }
+    }
+
   try {
     const uploadResponse = await cloudinary.uploader.upload(fileBase64, {
       folder: 'kepler_profiles',

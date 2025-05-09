@@ -10,16 +10,37 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ status: "error", message: "Invalid request data."})
     };
   } else {
+    const checkEditPerms = require("./utils/checkEditPerms.js");
+    const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
+    if (checkPerms.status === "error" || checkPerms.status === "denied") {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ status: "error", message: "User does not have edit permissions."})
+      }
+    }
     const addClue = await addClueToDatabase(db, body);
     if (addClue === "error" || !addClue) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ status: "error", message: "Failed to delete clue."})
+        body: JSON.stringify({ status: "error", message: "Failed to add clue."})
       };
     } else {
+            const discordNotification = require("./utils/discordNotifications.js");
+      const discord = new discordNotification('1369299576430923867');
+      discord.handleEmbeds({
+        title: 'Clue Added',
+        description: 'Someone has add an clue!',
+        color: "#228B22", 
+        fields: [
+          { name: 'User:', value: `${body.userToUpdate}`, inline: false },
+          { name: 'Added Clue:', value: `${addClue}`, inline: false },
+          { name: 'Time', value: `${new Date()}`, inline: false },
+        ],
+        footer: 'Clue Added 🌍',
+      })
       return {
         statusCode: 200,
-        body: JSON.stringify({ status: "success", message: "Clue deleted successfully."})
+        body: JSON.stringify({ status: "success", message: "Clue added successfully."})
       };
     }
   }

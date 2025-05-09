@@ -25,6 +25,11 @@ exports.handler = async function(event, context) {
       statusCode: 401,
       body: JSON.stringify({ status: "error", message: "Unauthorized" }),
     };
+  } else if (collection.active === false) {
+    return {
+      statusCode: 403,
+      body: JSON.stringify({ status: "error", message: "Team is inactive" }),
+    };
   } else {
     return {
       statusCode: 200,

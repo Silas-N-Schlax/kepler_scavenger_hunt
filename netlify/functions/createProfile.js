@@ -3,14 +3,21 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  if (!body.firstName || !body.lastName || !body.notes || !body.team || !body.role || !body.imageUrl) {
+  if (!body.firstName || !body.lastName || !body.notes || !body.team || !body.role || !body.imageUrl || !body.userToRegister) {
     return {
       statusCode: 400,
       body: JSON.stringify({ status: "error", message: "Missing parameters" }),
     };
   }
   const { firstName, lastName, notes, team, role, imageUrl } = body;
-
+  const checkEditPerms = require("./utils/checkEditPerms.js");
+    const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
+    if (checkPerms.status === "error" || checkPerms.status === "denied") {
+      return {
+        statusCode: 403,
+        body: JSON.stringify({ status: "error", message: "User does not have edit permissions."})
+      }
+    }
   
   
   const playerID = generatePlayerID(firstName, lastName);

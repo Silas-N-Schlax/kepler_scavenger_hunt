@@ -27,7 +27,9 @@ exports.handler = async function(event, context) {
       teamClues[parseInt(clueId) - 1] = true;
       await db.collection("teams").updateOne({ teamId: teamId }, { $set: { cluesFound: teamClues } });
       const teamData = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName})
-      notify({
+      const discordNotification = require("./utils/discordNotifications.js");
+      const discord = new discordNotification('1367197526079312014');
+      discord.handleEmbeds({
         title: `Clue Found!`,
         description: `A team has found ${clue.clueId}!!!`,
         color: '#00FFFF',
@@ -55,19 +57,6 @@ exports.handler = async function(event, context) {
     }
   }
 };
-
-async function notify(embedData) {
-  const discordNotification = require("./utils/discordNotifications.js");
-  const discord = new discordNotification('1367197526079312014');
-  console.log("Sending failed login attempt to Discord channel...");
-  
-  while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
-  }
-  await discord.ping();
-  await discord.sendEmbedToChannel(embedData);
-  await discord.killClient();
-}
 
 
 //http://localhost:8888/clues/Clue%201?clueID=1&clueAuth=abc

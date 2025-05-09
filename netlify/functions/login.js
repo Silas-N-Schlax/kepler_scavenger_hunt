@@ -22,10 +22,12 @@ exports.handler = async function(event, context) {
   const account = accounts.find((account) => account.username === username && account.password === password);
 
   if (account && account.allowedTokens.includes(token)) {
-    notifyAdmin({
+     const discordNotification = require("./utils/discordNotifications.js");
+      const discord = new discordNotification('1369299576430923867');
+      discord.handleEmbedsWithPing({
       title: 'Successful Login!',
       description: 'Someone has logged in successfully!',
-      color: "#00FF00",
+      color: "#90EE90",
       fields: [
         { name: 'Username:', value: `${username}`, inline: false },
         { name: 'Page Token:', value: `${token}`, inline: false },
@@ -41,10 +43,12 @@ exports.handler = async function(event, context) {
     };
   } else if (!account) {
     if (attempts >= 2) {
-        notifyAdmin({
+      const discordNotification = require("./utils/discordNotifications.js");
+      const discord = new discordNotification('1369299576430923867');
+      discord.handleEmbedsWithPing({
           title: 'Failed Login Attempt',
           description: 'Someone is trying to log in with invalid credentials!',
-          color: "#FF0000", 
+          color: "#301934", 
           fields: [
             { name: 'Username:', value: `${username}`, inline: false },
             { name: 'Page Token', value: `${token}`, inline: false },
@@ -72,17 +76,3 @@ exports.handler = async function(event, context) {
     }
   } 
 };
-
-
-async function notifyAdmin(embedData) {
-  const discordNotification = require("./utils/discordNotifications.js");
-  const discord = new discordNotification('1369299576430923867');
-  console.log("Sending failed login attempt to Discord channel...");
-  
-  while (!discord.client.readyAt) {
-    await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again
-  }
-  await discord.ping();
-  await discord.sendEmbedToChannel(embedData);
-  await discord.killClient();
-}
