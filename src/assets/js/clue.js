@@ -1,15 +1,3 @@
-//Check if the team has access to the clue, if not redirect to the main page.
-// If the team has access, show the clue.
-// once they get the riddle right, hide input field and show the answer on previous page under the riddle, and show the next riddle instead.
-
-//& On Load, check if team has access to the clue, and if they finished it
-//& If they have access, and not finished show the input
-//& If they have access and finished, show the next clue and location
-//& If showing clue check if the next riddle is finished, if so
-//& show answer on this page, so they can see what answer goes with which riddle
-
-//check on load of page
-
 document.addEventListener("DOMContentLoaded", async function() {
   
   const pars = new URLSearchParams(window.location.search);
@@ -30,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async function() {
   }
 })
 
-// Add event listener to the button
 const button = document.querySelector(".submit-button");
 button.addEventListener("click", async function(event) {
   console.log("Button clicked!");
@@ -107,8 +94,8 @@ async function loadContent(teamId, teamName, clueID) {
       document.querySelector(".location-riddle").innerHTML = `<strong>Location of Next QR Code:</strong> ${location}`;
       document.querySelector(".riddle").innerHTML = `<strong>Next Riddle:</strong> ${nextClue}`;
       document.querySelector(".answer").innerHTML = `<strong>Answer:</strong> ${answer}`;
-      document.querySelector(".clue-riddle").remove();
       document.querySelector(".qr-code").style.visibility = "visible";
+      document.querySelector(".answer-container").remove();
     } else {
       console.log("Clue is not finished yet.");
     }

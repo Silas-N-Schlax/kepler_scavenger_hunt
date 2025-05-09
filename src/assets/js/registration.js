@@ -26,7 +26,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
     const response = await fetch('/.netlify/functions/upload-image', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ fileBase64: base64 }),
+      body: JSON.stringify({ fileBase64: base64, userToRegister: userToRegister }),
     });
 
     const data = await response.json();

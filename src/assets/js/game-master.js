@@ -50,9 +50,9 @@ function loadContent(clues, teams, clueIds) {
           <span><input type="text" id="answer-c" name="answer" value="${clue.classical.answer}"></span><br>
 
       <div class="buttons">
-        <button type="submit" name="delete" >Delete Clue</button>
-        <button type="submit" name="submit" >Update Clue</button>
-        <button type="submit" name="add" >Add Clue</button>
+        <button id="delete" type="submit" name="delete" >Delete Clue</button>
+        <button id="submit" type="submit" name="delete" >Update Clue</button>
+        <button id="add" type="submit" name="delete" >Add Clue</button>
       </div>
       <hr>
     `;
@@ -75,7 +75,7 @@ function loadContent(clues, teams, clueIds) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ clueId: id }),
+          body: JSON.stringify({ clueId: id, userToUpdate: localStorage.getItem("accountName") }),
         });
         const result = await response.json();
         if (result.status === "success") {

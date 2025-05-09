@@ -58,6 +58,10 @@ async function getLogin(data) {
     body.style.visibility = "visible";
     const form = document.getElementById("login-form");
     form.style.visibility = "hidden"; 
+    if (window.location.href.includes("admin")) {
+      const selectMenuDiv = document.querySelector(".select-menu-container");
+      selectMenuDiv.style.visibility = "visible";
+    }
   } else {
     alert(result.message);
     localStorage.setItem("attempts", parseInt(data.attempts) + 1); 

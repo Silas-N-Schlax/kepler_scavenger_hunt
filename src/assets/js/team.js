@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     await loadUserProfiles();
   } else {
-    alert("You do not have access to this page. Please contact a Game Master, or ask a team member for the QR code!");
+    alert("You do not have access to this page, or this team is inactive. Please contact a Game Master, or ask a team member for the QR code!");
     window.location.href = "/"
   }
 
@@ -54,7 +54,6 @@ function formatPars() {
 
 
 async function checkAccess(teamId, key, token, teamName) {
-  console.log("Checking access for teamId: " + teamId + ", key: " + key + ", token: " + token + ", teamName: " + teamName);
   const response = await fetch("/.netlify/functions/checkAccess", {
     method: "POST",
     headers: {
