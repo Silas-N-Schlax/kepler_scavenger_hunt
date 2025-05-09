@@ -13,6 +13,7 @@ scripts: [
 title: "Registration"
 ---
 
+
 <form id="upload-form">
   <input type="file" id="profile-pic" name="profile-pic" accept="image/*" capture="environment" required />
   <input type="text" id="name-first" name="name-first" placeholder="Player First Name" required />
@@ -31,5 +32,3 @@ title: "Registration"
       </select>
   <button id="submit-button" type="submit">Upload</button>
 </form>
-
-<!-- Add who did the regristraion.... When logged in store name in localstorage, reset next login-->

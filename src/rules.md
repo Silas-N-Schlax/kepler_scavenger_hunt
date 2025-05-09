@@ -13,7 +13,7 @@ title: "Rules"
   3. Do NOT tamper with any of the clues once you find them. 
   4. **DO NOT sabotage other teams!**
   5. Keep Moscow clean! Pick up after yourselves!
-  6. Be respectful of all those around you, especially while in downtown Moscow, making sure to respect all city property and rules. 
+  6. Be respectful of all those around you, making sure to respect all city property and rules. 
   7. If you have a complaint or issue, talk to your team captain and they will speak with a Game Masters. 
   8. Be kind to your neighbor.
   9. Don’t cheat—even creatively! It is up to the Game Masters to decide if it is cheating. 

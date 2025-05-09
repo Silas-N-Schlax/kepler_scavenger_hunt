@@ -8,7 +8,7 @@ styles: [
 ]
 scripts: [
   "game-master",
-  # "login"
+  "login"
 ]
 title: "Game Masters"
 ---
