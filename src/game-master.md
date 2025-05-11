@@ -1,7 +1,7 @@
 ---
 layout: "base"
 page_title: "Kepler Scavenger Hunt"
-logo_location: "../../assets/files/logos/game-master.png"
+logo_location: "../../assets/files/logos/Game%20Masters.png"
 styles: [
   "game-master",
   "login",
