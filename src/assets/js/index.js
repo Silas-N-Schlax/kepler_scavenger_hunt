@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     data.teams.forEach((teams) => {
       const team = document.createElement("li");
       const teamLink = document.createElement("a");
-      teamLink.href = `/content/${teams}/home`;
+      teamLink.href = `/content/Team ${teams}/home`;
       teamLink.textContent = `Team ${teams}`;
       teamLink.className = "team-link";
       team.className = "team"
