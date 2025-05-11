@@ -18,7 +18,6 @@ exports.handler = async function(event, context) {
       }
     }
     const updates = await updateDatabase(db, body);
-    console.log(updates);
     if (updates === "error" || !updates) {
       return {
         statusCode: 400,

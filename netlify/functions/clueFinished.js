@@ -52,7 +52,6 @@ async function showerAnswer(clueId, teamId, teamName) {
   const clue = await getClue((Number(clueId) + 1).toString(), teamId, teamName, db);
   const team = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName });
   const teamClueStatus = team.cluesCompleted[Number(clueId)];
-  console.log("TeamClueStatus: " + teamClueStatus)
   if (!clue) {
     return "⚠️"
   } else if (teamClueStatus === false) {

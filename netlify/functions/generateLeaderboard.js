@@ -37,8 +37,6 @@ exports.handler = async function(event, context) {
 
 function orderWinners(scores, winners) {
   let finalOrder = []
-  console.log(scores)
-  console.log(winners[0].winners)
   winners[0].winners.forEach((winner) => {
     if (scores.map(score => score.teamName).includes(winner.teamName)) {
       finalOrder.push({
@@ -47,7 +45,6 @@ function orderWinners(scores, winners) {
         score: scores.find(score => score.teamName === winner.teamName).score,
       })
       scores = scores.filter(score => score.teamName !== winner.teamName)
-      console.log(scores)
     }
   })
   return finalOrder.concat(scores)

@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 const button = document.querySelector(".submit-button");
 button.addEventListener("click", async function(event) {
-  console.log("Button clicked!");
-  event.preventDefault(); // Prevent the default form submission
+  event.preventDefault();
   
   const pars = new URLSearchParams(window.location.search);
 
@@ -103,7 +102,6 @@ async function loadContent(teamId, teamName, clueID) {
 
 
 async function checkAccess(teamID, teamName, clueAuth, clueID) {
-  console.log("Checking access for teamId:");
   const response = await fetch("/.netlify/functions/checkAccessClue", {
     method: "POST",
     headers: {

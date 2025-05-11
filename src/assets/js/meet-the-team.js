@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     },
   })
   const data = await response.json();
-  console.log(data);
   if (data) {
     await loadContent(data);
   } else {
@@ -15,8 +14,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 async function loadContent(data) {
-  // How to format, Make a table or smth, the left will be hte team logo and name, to the right each team member in a colored box
-  // the team captain will always be in the top left corner of the team members, and a different color box, but not say team captain or their role
   const mainDiv = document.querySelector('.content-container');
   data.forEach(team => {
     const teamDiv = document.createElement('div');
@@ -37,7 +34,6 @@ async function loadContent(data) {
       member = member[0];
       const memberDiv = document.createElement('div');
       memberDiv.classList.add('team-member');
-      console.log(member);
       if (member.role === "Team Captain") {
         memberDiv.classList.add('captain');
       } 

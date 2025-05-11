@@ -67,7 +67,6 @@ async function checkAccess(teamId, key, token, teamName) {
     }),
   });
   const data = await response.json();
-  console.log(data.status);
   if (data.status === "success") {
     return true;
   } else {
@@ -90,7 +89,6 @@ async function loadContent(teamId, teamName) {
   if (data.status === "success") {
     for (let i = 0; i < data.clues.length; i++) {
       const clue = data.clues[i];
-      console.log(clue)
       let list = document.getElementsByClassName("clue-container")[0];
       const li = document.createElement("li");
       li.className = "clues";
@@ -123,7 +121,6 @@ async function loadUserProfiles() {
     }),
   });
   const data = await response.json();
-  console.log(data.profiles);
   if (data.status === "success") {
     let profilesToLoad = data.profiles;
     profilesToLoad.forEach((profile) => {
@@ -140,7 +137,6 @@ async function loadUserProfiles() {
           <p>${profile.role}</p>
         </div>
       `;
-      console.log(profile);
       list.appendChild(div);
      } else {
       let list = document.getElementsByClassName("team-container-members")[0];
@@ -154,11 +150,9 @@ async function loadUserProfiles() {
           <h3>${profile.firstName} ${profile.lastName}</h3>
         </div>
       `;
-      console.log(profile);
       list.appendChild(div);
      }
     })
   } else {
-    //do nothing, just show the page without the profiles, its ok :)
   }
 }

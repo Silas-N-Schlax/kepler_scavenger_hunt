@@ -12,8 +12,6 @@
 
 document.addEventListener("DOMContentLoaded", async function () {
   const data = await getChatData()
-  console.log(data)
-  loadMessages(data.messages)
 })
 
 async function getChatData() {
@@ -31,9 +29,7 @@ async function getChatData() {
 }
 
 function loadMessages(messages) {
-  console.log(messages)
   messages.forEach((message) => {
-    console.log(message)
     const messageContainer = document.querySelector(".message-container");
     const messageDiv = document.createElement("div");
     messageDiv.classList.add("message")
@@ -109,7 +105,6 @@ form.addEventListener("submit", async function () {
     })
   })
   if (response.status === 200) {
-    console.log("loading data")
     const data = await getChatData()
     document.getElementsByClassName("message-input")[0].value = ""
     loadMessages(data.messages)

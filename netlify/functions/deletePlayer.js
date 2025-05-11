@@ -12,7 +12,6 @@ exports.handler = async function(event, context) {
     };
   } else {
     const checkEditPerms = require("./utils/checkEditPerms.js");
-    console.log(body.userToUpdate)
     const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
     if (checkPerms.status === "error" || checkPerms.status === "denied") {
       return {

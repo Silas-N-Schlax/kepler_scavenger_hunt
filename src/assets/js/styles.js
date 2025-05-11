@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  console.log("Loading color scheme...")
   const response = await fetch("/.netlify/functions/getColorScheme", {
     method: "POST",
     headers: {

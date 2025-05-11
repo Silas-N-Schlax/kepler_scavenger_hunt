@@ -3,7 +3,6 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  console.log(body)
   if (!body.teamId || !body.teamName || !body.answer || !body.clueId) {``
     return {
       statusCode: 400,
@@ -14,7 +13,6 @@ exports.handler = async function(event, context) {
   const teamName = body.teamName;
   const clueId = body.clueId;
   const answer = body.answer;
-  console.log(answer)
 
   const clue = await getClue(Number(clueId - 1).toString(), teamId, teamName, db);
   const team = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName });
@@ -57,7 +55,6 @@ exports.handler = async function(event, context) {
 
 
 async function getClue(clueId, teamId, teamName, db) {
-  console.log("ClueID:" + clueId)
   let team = await db.collection("teams").findOne({ teamId: teamId, teamName: teamName });
   let clue = await db.collection("clues").findOne({ clueId: clueId });
   if (!team || !clue) {
@@ -82,7 +79,6 @@ async function getClue(clueId, teamId, teamName, db) {
 async function checkIfWon(teamId, teamName, db, teamData) {
   if (teamData.cluesCompleted.every((clue) => clue === true)) {
     let winners = await db.collection("winners").findOne({});
-    console.log(winners)
     if (!winners) {
       await db.collection("winners").insertOne({ id: "winners", winners: [{ teamId: teamId, teamName: teamName }] });
     } else {
@@ -95,7 +91,6 @@ async function checkIfWon(teamId, teamName, db, teamData) {
 async function notify(embedData) {
   const discordNotification = require("./utils/discordNotifications.js");
   const discord = new discordNotification('1367197526079312014');
-  console.log("Sending failed login attempt to Discord channel...");
   
   while (!discord.client.readyAt) {
     await new Promise((resolve) => setTimeout(resolve, 10));

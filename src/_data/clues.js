@@ -10,7 +10,6 @@ try {
   for (let i = 0; i < files.length; i++) {
     clues.push([files[i].replace(".md", ""), i+1]);
   }
-  console.log(`📂 Found clues in ${clueDir}:`, clues);
   module.exports = clues;
 } catch (error) {
   console.error(`❌ Error loading clues from ${clueDir}:`, error);

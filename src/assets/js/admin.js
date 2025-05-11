@@ -362,7 +362,6 @@ function loadTeamContent(teams) {
 }
 
 function loadWinnersContent(winners) {
-  console.log(winners.winners);
   let mainDiv = document.querySelector(".content-container");
   mainDiv.innerHTML = ""; 
   let winnersDiv = document.createElement("div");
@@ -597,8 +596,6 @@ async function loadAccountsContent(accounts) {
       return true;
     }
   })
-  console.log(allTokens);
-  console.log(accounts);
   let accountsDiv = document.createElement("div");
   accountsDiv.className = "accounts-container";
   accounts.forEach((account) => { 

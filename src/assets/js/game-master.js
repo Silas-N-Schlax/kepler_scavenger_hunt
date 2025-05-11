@@ -111,7 +111,6 @@ function loadContent(clues, teams, clueIds) {
           },
           userToUpdate: localStorage.getItem("accountName")
         };
-        console.log(data);
         const response = await fetch("/.netlify/functions/updateClue", {
           method: "POST",
           headers: {

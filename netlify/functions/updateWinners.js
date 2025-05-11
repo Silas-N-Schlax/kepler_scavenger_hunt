@@ -49,7 +49,6 @@ async function updateDatabase(db, data) {
   if (!data.winners) {
     return "error";
   } else {
-    console.log(data.winners)
     return await db.collection("winners").updateOne({ id: "winners" }, { $set: { winners: data.winners } });
   }
 }

@@ -11,7 +11,6 @@ exports.handler = async function(event, context) {
     }
   })
   activeTeams.sort((a, b) => a.localeCompare(b));
-  console.log(activeTeams);
   
   if (!teams) {
     return {

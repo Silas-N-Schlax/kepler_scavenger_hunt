@@ -3,7 +3,6 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);  
-  console.log(body);
   if (!body || !body.clueId || !body.authKey || !body.userToUpdate || !body.easy || !body.classical) {
     return {
       statusCode: 401,

@@ -15,8 +15,6 @@ class CheckEditPerms {
       const user = await this.db.collection("accounts").findOne({ username: username });
       const allTokens = await this.db.collection("accounts").findOne({ id: "allTokens" });
       const editToken = allTokens.tokens[4][1]
-      console.log("Edit Token:", editToken);
-      console.log(user.allowedTokens.includes(editToken));
       if (!user) {
         return { status: "error", message: "User not found." };
       } else if (user.allowedTokens.includes(editToken)) {

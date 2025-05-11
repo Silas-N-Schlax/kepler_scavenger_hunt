@@ -91,7 +91,6 @@ function generatePlayerID(firstName, lastName) {
 async function notifyAdmin(embedData) {
   const discordNotification = require("./utils/discordNotifications.js");
   const discord = new discordNotification('1367197526079312014');
-  console.log("Sending failed login attempt to Discord channel...");
   
   while (!discord.client.readyAt) {
     await new Promise((resolve) => setTimeout(resolve, 10)); // Wait 100ms before checking again

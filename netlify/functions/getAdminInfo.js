@@ -10,7 +10,6 @@ exports.handler = async function(event, context) {
   const teamNames = await getTeamNames(db);
   const colors = await getColorSchemes(db);
   const chatData = await getChatData(db);
-  console.log(chatData)
 
   if (!teams || !players || !winners || !accounts || !teamNames || !colors || !chatData) {
     return {

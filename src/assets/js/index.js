@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       team.appendChild(teamLink);
       teamsDiv.appendChild(team);
     })
-    console.log(data.teams);
   } else {
     alert("Failed to load active teams data.");
   }

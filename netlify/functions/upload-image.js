@@ -30,7 +30,6 @@ exports.handler = async (event) => {
         { width: 300, height: 300, crop: 'fill', gravity: 'auto' }, // Resize and crop to 300x300
       ],
     });
-    console.log(uploadResponse.secure_url);
     return {
       statusCode: 200,
       body: JSON.stringify({ url: uploadResponse.secure_url }),

@@ -93,7 +93,6 @@ async function canSendMessage(ip, db, message) {
       const currentTime = new Date().getTime();
       const difference = currentTime - rateLimit.time;
       const differenceInMinutes = Math.floor(difference / 1000 / 60);
-      console.log(differenceInMinutes)
       if (differenceInMinutes >= 5 || differenceInMinutes < 0) {
         rateLimits = rateLimits.filter((limit) => limit.ip !== ip);
         await db.collection("chatData").updateOne( { id: "rateLimits" }, { $set: { rateLimits: rateLimits } }, { upsert: true } );

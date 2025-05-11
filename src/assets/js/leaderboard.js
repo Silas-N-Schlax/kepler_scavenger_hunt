@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const data = await response.json();
   if (data.status === "success") {
     const leaderboard = data.leaderboard;
-    console.log(leaderboard);
     const mainDiv = document.querySelector(".content-container");
     const leaderboardDiv = document.createElement("div");
     leaderboardDiv.className = "leaderboard-container";
