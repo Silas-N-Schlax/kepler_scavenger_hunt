@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   
 
   if (await checkAccess(teamId, key, token, teamName)) {
+    console.log("Access granted");
     const body = document.querySelector("body");
     body.style.visibility = "visible";
 
@@ -67,6 +68,7 @@ async function checkAccess(teamId, key, token, teamName) {
     }),
   });
   const data = await response.json();
+  console.log(data);
   if (data.status === "success") {
     return true;
   } else {

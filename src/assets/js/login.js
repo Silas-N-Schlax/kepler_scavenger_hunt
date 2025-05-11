@@ -48,7 +48,6 @@ async function getLogin(data) {
     },
     body: JSON.stringify(data),
   });
-
   const result = await response.json();
   if (response.ok) {
     alert("Login successful! Redirecting to the main page.");

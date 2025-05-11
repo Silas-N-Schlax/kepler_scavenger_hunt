@@ -3,7 +3,8 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  if (!body.username || !body.password|| !body.token || !body.attempts || !body.ip) {``
+console.log(body);
+  if (!body.username || !body.password|| !body.token || !body.attempts || !body.ip) {
     return {
       statusCode: 400,
       body: JSON.stringify({ status: "error", message: "Missing parameters" }),

@@ -4,7 +4,7 @@ exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);  
 
-  if (!body || !body.clueId) {
+  if (!body || !body.clueId || body.clueID === "0") {
     return {
       statusCode: 400,
       body: JSON.stringify({ status: "error", message: "Invalid request data."})
