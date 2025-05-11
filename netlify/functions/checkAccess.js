@@ -14,8 +14,7 @@ exports.handler = async function(event, context) {
   const token = body.token;
   const teamName = body.teamName;
   const page = body.page;
-  let pageName = page.split("/")[2].split("%20")[1]
-  console.log(teamName === pageName);
+  let pageName = page.split("/")[2].split("%20")[1];
 
   const collection = await db.collection("teams").findOne({ teamId: teamId, key: key, token: token, teamName: teamName });
   console.log(collection);
