@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     loadContent(teamId, teamName);
 
-    // store access in local storage
     localStorage.setItem("teamId", teamId);
     localStorage.setItem("teamName", teamName);
     localStorage.setItem("key", key);
@@ -63,7 +62,8 @@ async function checkAccess(teamId, key, token, teamName) {
       teamId: teamId,
       key: key,
       token: token,
-      teamName: teamName
+      teamName: teamName,
+      page: window.location.pathname
     }),
   });
   const data = await response.json();
@@ -89,6 +89,10 @@ async function loadContent(teamId, teamName) {
   if (data.status === "success") {
     for (let i = 0; i < data.clues.length; i++) {
       const clue = data.clues[i];
+      console.log(clue);
+      if (clue.clueId === "0") {
+        return;
+      }
       let list = document.getElementsByClassName("clue-container")[0];
       const li = document.createElement("li");
       li.className = "clues";
@@ -121,6 +125,7 @@ async function loadUserProfiles() {
     }),
   });
   const data = await response.json();
+  console.log(data);
   if (data.status === "success") {
     let profilesToLoad = data.profiles;
     profilesToLoad.forEach((profile) => {
