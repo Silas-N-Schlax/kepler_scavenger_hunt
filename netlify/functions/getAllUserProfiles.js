@@ -31,6 +31,9 @@ exports.handler = async function(event, context) {
 
 
 function sortProfiles(profiles) {
+  if (profiles.length === 0) {
+    return [];
+  }
   let sortedProfiles = []
   profiles.forEach((member) => {
     if (member[0].role === "Team Captain") {
