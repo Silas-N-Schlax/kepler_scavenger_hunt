@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     await loadUserProfiles();
   } else {
     alert("You do not have access to this page, or this team is inactive. Please contact a Game Master, or ask a team member for the QR code!");
-    // window.location.href = "/"
+    window.location.href = "/"
   }
 
 })
