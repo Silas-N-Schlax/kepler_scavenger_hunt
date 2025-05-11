@@ -48,7 +48,7 @@ exports.handler = async function(event, context) {
 async function addTeamToDatabase(db, data) {
   const numberOfClues = Number(await db.collection("clues").countDocuments({})) - 1;
   let found = [], completed = [];
-  for (let i = 1; i <= numberOfClues; i++) {
+  for (let i = 0; i <= numberOfClues; i++) {
     found.push(false);
     completed.push(false);
   }
