@@ -42,4 +42,4 @@ exports.handler = async function(event, context) {
   }
 };
 
-//http://localhost:8888/content/achilles/home?teamId=123&key=abc&token=xyz&teamName=Achilles
+//http://localhost:8888/content/Team%20Achilles/home?teamId=123&key=abc&token=xyz&teamName=Achilles
