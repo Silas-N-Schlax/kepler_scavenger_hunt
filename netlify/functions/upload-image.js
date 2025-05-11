@@ -15,7 +15,7 @@ exports.handler = async (event) => {
   const { fileBase64 } = body;
 
   const checkEditPerms = require("./utils/checkEditPerms.js");
-    const checkPerms = await checkEditPerms.checkEditPerms(body.userToUpdate);
+    const checkPerms = await checkEditPerms.checkEditPerms(body.userToRegister);
     if (checkPerms.status === "error" || checkPerms.status === "denied") {
       return {
         statusCode: 403,
