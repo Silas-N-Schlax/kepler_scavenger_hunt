@@ -31,7 +31,7 @@ exports.handler = async function(event, context) {
   } else {
     return {
       statusCode: 200,
-      body: JSON.stringify({ messages: formattedMessages })
+      body: JSON.stringify({ status: "success", messages: formattedMessages })
     }
   }
 
