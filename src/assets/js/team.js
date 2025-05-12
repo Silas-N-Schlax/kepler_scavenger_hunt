@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", async function() {
   const key = pars[1];
   const token = pars[2];
   const teamName = pars[3];
-  
 
   if (await checkAccess(teamId, key, token, teamName)) {
     console.log("Access granted");
@@ -32,20 +31,19 @@ document.addEventListener("DOMContentLoaded", async function() {
 function formatPars() {
   const pars = []
 
-  if (localStorage.getItem("teamId") && localStorage.getItem("key") && localStorage.getItem("token") && localStorage.getItem("teamName")) {
-    pars.push(localStorage.getItem("teamId"));
-    pars.push(localStorage.getItem("key"));
-    pars.push(localStorage.getItem("token"));
-    pars.push(localStorage.getItem("teamName"));
-    return pars;
-  }
-  else if (window.location.search) {
-    const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(window.location.search);
+ if (urlParams.get("teamId") && urlParams.get("key") && urlParams.get("token") && urlParams.get("teamName")) {
     pars.push(urlParams.get("teamId"));
     pars.push(urlParams.get("key"));
     pars.push(urlParams.get("token"));
     pars.push(urlParams.get("teamName"));
     return pars
+  } else if (localStorage.getItem("teamId") && localStorage.getItem("key") && localStorage.getItem("token") && localStorage.getItem("teamName")) {
+    pars.push(localStorage.getItem("teamId"));
+    pars.push(localStorage.getItem("key"));
+    pars.push(localStorage.getItem("token"));
+    pars.push(localStorage.getItem("teamName"));
+    return pars;
   } else {
     alert("Missing parameters in URL.");
     window.location.href = "/"
