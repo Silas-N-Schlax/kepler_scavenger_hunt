@@ -189,10 +189,10 @@ function loadContent(clues, teams, clueIds) {
     let qrCodeDiv = document.createElement("div");
     qrCodeDiv.className = "qr-code";
     const link = document.createElement("a");
-    link.href = `/assets/files/qr-codes/clues/${clueId}.png`;
+    link.href = `/assets/files/qr-codes//clue/clues-${clueId}.png`;
     link.classList.add("qr-code-link");
     let qrCodeImg = document.createElement("img");
-    qrCodeImg.src = `/assets/files/qr-codes/clues/${clueId}.png`;
+    qrCodeImg.src = `/assets/files/qr-codes/clues/clue-${clueId}.png`;
     qrCodeImg.alt = `QR Code for clue: ${clueId}`;
     link.appendChild(qrCodeImg);
     qrCodeDiv.appendChild(link);

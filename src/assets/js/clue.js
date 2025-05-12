@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     
   } else {
     alert("Your team has not found this clue yet. Find it and scan the QR code to unlock it for your team!");
-    window.location.href = `/content/${teamName}/home`;
+    window.location.href = `/content/Team ${teamName}/home`;
   }
 })
 

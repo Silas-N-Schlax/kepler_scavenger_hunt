@@ -32,6 +32,9 @@ async function loadContent(data) {
     //image of team member then name right below it
     team.teamMembers.forEach((member) => {
       member = member[0];
+      if (member === null) {
+        return;
+      }
       const memberDiv = document.createElement('div');
       memberDiv.classList.add('team-member');
       if (member.role === "Team Captain") {
