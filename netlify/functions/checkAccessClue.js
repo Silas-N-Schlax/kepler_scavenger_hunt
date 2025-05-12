@@ -59,4 +59,4 @@ exports.handler = async function(event, context) {
 };
 
 
-//http://localhost:8888/clues/Clue%201?clueID=1&clueAuth=abc
+//http://localhost:8888/clues/Clue-1?clueID=1&clueAuth=abc

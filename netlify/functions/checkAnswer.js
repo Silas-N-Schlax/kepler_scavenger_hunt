@@ -3,7 +3,7 @@ const database = require("./utils/database.js");
 exports.handler = async function(event, context) {
   const db = await database.returnDatabase();
   const body = JSON.parse(event.body);
-  if (!body.teamId || !body.teamName || !body.answer || !body.clueId) {``
+  if (!body.teamId || !body.teamName || !body.answer || !body.clueId) {
     return {
       statusCode: 400,
       body: JSON.stringify({ status: "error", message: "Missing parameters" }),

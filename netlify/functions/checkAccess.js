@@ -17,7 +17,7 @@ exports.handler = async function(event, context) {
   let pageName = page.split("/")[2].split("%20")[1];
 
   const collection = await db.collection("teams").findOne({ teamId: teamId, key: key, token: token, teamName: teamName });
-  console.log(collection);
+  console.log(teamName === collection.teamName);
   if (!collection) {
     return {
       statusCode: 401,

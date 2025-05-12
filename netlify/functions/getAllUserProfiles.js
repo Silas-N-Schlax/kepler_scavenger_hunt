@@ -6,7 +6,7 @@ exports.handler = async function(event, context) {
 
   const team = await db.collection("teams").find({}).toArray();
   let allProfiles = [];
-  team.forEach((team) => {
+  team.forEach(async (team) => {
     let teamProfiles = [];
     team.teamMembers.forEach((member) => {
       teamProfiles.push(formatProfiles([member], db));
