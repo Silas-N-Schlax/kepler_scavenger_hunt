@@ -1,17 +1,8 @@
-//! Features
-//* 5 min rate limiting, server side validation, use ip address for the limiting
-//* auto refresh the chat every 1 min, don't reload just request data from server
-//* show a loading spinner while waiting for the response???
-//* Send notifications to discord when a new message is sent
-//* add secret "slash" commands to server to allows those who know it to bypass the rate limiting
-//& Add chats in order to admin page to deleted as needed.
-//* Store in order keeping information like team name, team id, Ip, date, and message
-//* Show the team name and pfp for messages sent by the team regardless of the user
-//* 
-
-
 document.addEventListener("DOMContentLoaded", async function () {
   const data = await getChatData()
+  if (data.status === "success") {
+    loadMessages(data.messages)
+  }
 })
 
 async function getChatData() {
