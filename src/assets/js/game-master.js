@@ -51,8 +51,8 @@ function loadContent(clues, teams, clueIds) {
 
       <div class="buttons">
         <button id="delete" type="submit" name="delete" >Delete Clue</button>
-        <button id="submit" type="submit" name="delete" >Update Clue</button>
-        <button id="add" type="submit" name="delete" >Add Clue</button>
+        <button id="submit" type="submit" name="submit" >Update Clue</button>
+        <button id="add" type="submit" name="add" >Add Clue</button>
       </div>
       <hr>
     `;
@@ -174,6 +174,7 @@ function loadContent(clues, teams, clueIds) {
     qrCodeDiv.className = "qr-code";
     const link = document.createElement("a");
     link.href = `/assets/files/qr-codes/teams/${team}.png`;
+    link.target = "_blank";
     link.classList.add("qr-code-link");
     let qrCodeImg = document.createElement("img");
     qrCodeImg.src = `/assets/files/qr-codes/teams/${team}.png`;
@@ -189,7 +190,8 @@ function loadContent(clues, teams, clueIds) {
     let qrCodeDiv = document.createElement("div");
     qrCodeDiv.className = "qr-code";
     const link = document.createElement("a");
-    link.href = `/assets/files/qr-codes//clue/clues-${clueId}.png`;
+    link.href = `/assets/files/qr-codes/clues/clue-${clueId}.png`;
+    link.target = "_blank";
     link.classList.add("qr-code-link");
     let qrCodeImg = document.createElement("img");
     qrCodeImg.src = `/assets/files/qr-codes/clues/clue-${clueId}.png`;
