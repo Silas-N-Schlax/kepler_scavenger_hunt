@@ -8,7 +8,7 @@ title: "Rules"
 
   # Below are the Rules for the Scavenger Hunt. 
 
-  1. You may NOT under any circumstances use AI (ex. ChatGPT) or Google (*unless otherwise stated!*) to figure out the riddles. You may use parents as help. 
+  1. You may NOT under any circumstances use AI (ex. ChatGPT) or Google (*unless otherwise stated!*) to figure out the riddles. You may use parents as help. **Google Map (or alternative)is always permitted!** 
   2. Do NOT disclose any of the clues to other teams. Keep that information within your team only. 
   3. Do NOT tamper with any of the clues once you find them. 
   4. **DO NOT sabotage other teams!**
