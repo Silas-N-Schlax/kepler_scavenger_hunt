@@ -28,6 +28,7 @@ title: "HELP!"
   ## Q&A
   
   1. Q. What is the number of players per team? A. There will be a minimum of 5 per team, and a maximum of 7 members per team. 
-  2. Q. How do riddle answers work? A. The answers will be one word, case insensitive, will contain no special characters, and no numbers. Good examples: BOB, bOb, BoB, boB, Bob. Wrong examples: B@b, B!23, B1@#.
-  3. Q. What if we cannot find the correct answer? A. If your team cannot figure out the answer, have your team captain contact a game master with at least 7 guesses for either a hint, or correction if necessary.
+  2. Q. How do riddle answers work? A. The answers will be **one or two** words (never three or more), case insensitive, will contain no special characters, and no numbers. Good examples: BOB, bOb, BoB, boB, Bob. Wrong examples: B@b, B!23, B1@#.
+  3. Q> How do I answer a riddle with a 2 word answer? A. Just put a space between the words, caps does not matter 
+  4. Q. What if we cannot find the correct answer? A. If your team cannot figure out the answer, have your team captain contact a game master with at least 7 guesses for either a hint, or correction if necessary.
   
