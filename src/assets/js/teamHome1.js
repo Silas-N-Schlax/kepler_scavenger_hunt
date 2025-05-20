@@ -99,7 +99,6 @@ async function loadContent(teamId, teamName) {
           </a>
         `;
         list.appendChild(li);
-        alert("Clue #" + clue.clueId + " is available!");
       }
     }
   } else {
