@@ -22,7 +22,8 @@ title: "Rules"
   12. Clues will **NEVER** require entering dangerous or restricted areas.
   13. Include all team members when ever possible. Even the young ones!
   14. Remember to always be a good sport!
-  15. And most importantly, have fun!
+  15. Switching teams is not permitted unless given permission from a Game Master (as they have to edit the system). 
+  16. And most importantly, have fun!
   
 
 
