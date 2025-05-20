@@ -84,22 +84,23 @@ async function loadContent(teamId, teamName) {
     }),
   });
   const data = await response.json();
+  console.log(data);
   if (data.status === "success") {
     for (let i = 0; i < data.clues.length; i++) {
       const clue = data.clues[i];
-      console.log(clue);
-      if (clue.clueId === "0") {
-        return;
+      console.log(clue.clueId === "0");
+      if (clue.clueId != "0") {
+        let list = document.getElementsByClassName("clue-container")[0];
+        const li = document.createElement("li");
+        li.className = "clues";
+        li.innerHTML = `
+          <a href="/clues/clue-${clue.clueId}?clueID=${clue.clueId}" class="class-link">
+            Clue #${clue.clueId} (${clue.status})
+          </a>
+        `;
+        list.appendChild(li);
+        alert("Clue #" + clue.clueId + " is available!");
       }
-      let list = document.getElementsByClassName("clue-container")[0];
-      const li = document.createElement("li");
-      li.className = "clues";
-      li.innerHTML = `
-        <a href="/clues/clue-${clue.clueId}?clueID=${clue.clueId}" class="class-link">
-          Clue #${clue.clueId} (${clue.status})
-        </a>
-      `;
-      list.appendChild(li);
     }
   } else {
     alert("Error loading content. Please try again later.");
